@@ -7,23 +7,9 @@ const app = new Koa();
 
 app.use(koaBody());
 
-// app.use(cors());
-
-app.use((ctx, next) => {
-  if (ctx.request.method !== 'OPTIONS') {
-    next();
-    return;
-  }
-
-  ctx.response.set('Access-Control-Allow-Origin', '*');
-  ctx.response.set('Access-Control-Allow-Headers', 'Access-Control-Allow-Origin, Content-Type, Access-Control-Allow-Headers');
-  ctx.response.set('Access-Control-Allow-Methods', 'GET, POST, DELETE, PUT');
-  ctx.response.status = 204;
-});
+app.use(cors());
 
 app.use(async ctx => {
-  ctx.response.set('Access-Control-Allow-Origin', '*');
-
   if (ctx.url = 'http://localhost:7777/notes') {
     if (ctx.method === 'GET') {
       ctx.body = data;
